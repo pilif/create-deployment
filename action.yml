@@ -1,4 +1,4 @@
-name: Create a GitHub deployment
+name: Create GH deployment
 description: Create a new deployment in your repo.
 
 inputs:
