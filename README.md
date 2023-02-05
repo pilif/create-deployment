@@ -12,7 +12,8 @@ Add the action to your workflow file.
     jobs:
       release:
         steps:
-          - uses: avakar/create-deployment@v1
+          - name: Create GH deployment
+            uses: RafaelGSS/create-deployment@v2.0.1
             with:
               auto_merge: false
             env:
