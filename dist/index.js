@@ -9775,7 +9775,8 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
-const { GitHub, context } = __nccwpck_require__(5438);
+const github = __nccwpck_require__(5438);
+const context = github.context;
 
 async function main() {
   const ref = core.getInput('ref') || context.ref || context.sha;
@@ -9815,12 +9816,12 @@ async function main() {
     }
   }
 
-  const github = new GitHub(
+  const octokit = github.getOctokit(
     process.env.GITHUB_TOKEN,
     { previews: ["ant-man-preview", "flash-preview"]});
 
   core.debug(JSON.stringify(req));
-  const resp = await github.repos.createDeployment(req);
+  const resp = await octokit.rest.repos.createDeployment(req);
   core.debug(JSON.stringify(resp));
 
   if (resp.status >= 400) {
